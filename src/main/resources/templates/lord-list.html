@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>List of lords</title>
+</head>
+<body>
+<div th:switch="${lords}">
+    <h2 th:case="null">No found</h2>
+    <div th:case="*">
+        <h2>Lords</h2>
+        <table>
+            <form th:action="@{/top}">
+                <input type="submit" value="Top 10 youngest">
+            </form>
+            <form th:action="@{/filter}">
+                <input type="submit" value="All Lords without planets">
+            </form>
+            <form th:action="@{/lord-list}">
+                <input type="submit" value="Show all">
+            </form>
+            <thead>
+            <p>
+                <tr>
+                    <th>First Name</th>
+                    <th>Age</th>
+                    <th>List of subordinate planets</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr th:each="lord : ${lords}">
+                <td th:text="${lord.name}"></td>
+                <td th:text="${lord.age}"></td>
+                <td th:text="${lord.planets}"></td>
+                <td><a th:href="@{lord-delete/{id}(id=${lord.id})}">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="/lord-create">Add lord</a></p>
+    <p><a href="/planet-list">Go to planet's list</a></p>
+</div>
+
+</body>
+</html>

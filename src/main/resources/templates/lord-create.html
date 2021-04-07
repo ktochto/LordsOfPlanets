@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Create lord</title>
+</head>
+<body>
+<form action="#" th:action="@{/lord-create}" th:object="${lord}" method="post">
+    <label for="name">Lord's Name</label>
+    <input type="text" th:field="*{name}" id="name" placeholder="Add">
+    <label for="age">Lord's Age</label>
+    <input type="text" th:field="*{age}" id="age" placeholder="Add">
+    <input type="submit" value="Add lord">
+</form>
+</body>
+</html>
